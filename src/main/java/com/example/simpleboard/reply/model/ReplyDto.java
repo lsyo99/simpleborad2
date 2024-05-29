@@ -1,4 +1,4 @@
-package com.example.simpleboard.reply.db;
+package com.example.simpleboard.reply.model;
 
 import com.example.simpleboard.post.db.PostEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -9,24 +9,18 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@Builder
-@Entity(name ="reply")
-public class ReplyEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ReplyDto {
     private Long id;
-    @ManyToOne
-    @ToString.Exclude
-    @JsonIgnore
-    private PostEntity post;
+    private Long postId;
     private String userName;
     private String password;
     private String status;
     private String title;
-    @Column(columnDefinition = "TEXT")
     private String content;
     private LocalDateTime replied_at;
+
 }
